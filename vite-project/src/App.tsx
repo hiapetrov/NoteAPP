@@ -3,6 +3,19 @@ import { Container } from "react-bootstrap";
 import {Routes, Route, Navigate } from "react-router-dom"
 import NewNote from "./components/NewNote"
 
+type Note = {
+  id: String 
+} & NoteData
+
+type NoteData ={
+  title: String
+  markdown: String
+  Tag : Tags[]
+}
+type Tags ={
+  id: String
+  lable: String
+}
 function App() {
 
   return (
