@@ -5,7 +5,7 @@ export function useLocalStorage<T>( key: string, initianValue: T | (()=> T)) {
         const jsonValue = localStorage.getItem(key)
 
         if (jsonValue == null) {
-            if ( typeof initianValue === function) {
+            if ( typeof initianValue === "function") {
                 return (initianValue as () => T) ()
             } else {
                 return initianValue

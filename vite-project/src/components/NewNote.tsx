@@ -1,10 +1,15 @@
+import { NoteData } from "../App"
 import NoteForm from "./NoteForm"
 
-export default function NewNote() {
+export type NewNoteProps = {
+    onSubmit : (data: NoteData) => void
+}
+
+export default function NewNote( { onSubmit }: NewNoteProps) {
     return (
         <>
         <h1>NewNote</h1>
-        <NoteForm/>
+        <NoteForm onSubmit={onSubmit}/>
         </>
     )
 }
