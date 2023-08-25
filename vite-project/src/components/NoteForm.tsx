@@ -11,7 +11,7 @@ type NoteFormProps = {
 export default function NoteForm( { onSubmit } : NoteFormProps ) {
     const titleRef = useRef<HTMLInputElement>(null)
     const markdownRef = useRef<HTMLTextAreaElement>(null)
-    const [ selectTags, setSelectTags] = useState<Tag[]>([])
+    const [ selectedTags, setSelectedTags] = useState<Tag[]>([])
 
     function handleSubmit(e: FormEvent) {
         e.preventDefault()
@@ -37,7 +37,16 @@ export default function NoteForm( { onSubmit } : NoteFormProps ) {
                 <Col>
                     <Form.Group controlId='Tags'>
                         <Form.Label>Title</Form.Label>
-                        <CreatableReactSelect isMulti />
+                        <CreatableReactSelect 
+                            value={selectedTags.map( tag => {
+                                return { label: tag.label, value: tag.id }
+                            })}
+                            onChange={ tags => {
+                                setSelectedTags(tags.map( tag => {
+                                return { label:tag.label, id: tag.value}
+                            }))
+                            }}
+                             isMulti />
                     </Form.Group>
                 </Col>
             </Row>
