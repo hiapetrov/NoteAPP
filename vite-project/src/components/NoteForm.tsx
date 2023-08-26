@@ -22,7 +22,7 @@ export default function NoteForm( { onSubmit , onAddTag, availableTags } : NoteF
 
         onSubmit({
             title: titleRef.current!.value,
-            markdown: markdownRef.current!.value,   
+            markdown: markdownRef.current!.value,    
             tags: selectedTags
         })
         navigate("..")
@@ -40,7 +40,7 @@ export default function NoteForm( { onSubmit , onAddTag, availableTags } : NoteF
                 </Col>
                 <Col>
                     <Form.Group controlId='Tags'>
-                        <Form.Label>Title</Form.Label>
+                        <Form.Label>Tags</Form.Label>
                         <CreatableReactSelect 
                             onCreateOption={label => {
                                 const newTag = {id: uuidV4(), label}
