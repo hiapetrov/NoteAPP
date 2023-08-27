@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 import {Routes, Route, Navigate } from "react-router-dom"
 import NewNote from "./components/NewNote"
 import { v4 as uuidV4} from "uuid"
-import { Notelist } from "./components/NoteList";
+import { NoteList } from "./components/NoteList";
 
 export type Note = {
   id: string 
@@ -55,7 +55,7 @@ function App() {
   return (
     <Container className="my=4">
       <Routes>
-        <Route path="/" element={<Notelist availableTags={tags}/>}/>
+        <Route path="/" element={<NoteList notes={notes} availableTags={tags}/>}/>
         <Route 
           path="/new" 
           element={
