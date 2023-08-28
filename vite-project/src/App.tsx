@@ -16,7 +16,7 @@ export type RawNote = {
 } & RawNotesData
 
 export type RawNotesData = {
-  id: string
+  title: string
   markdown: string
   tagIds: string[]
 }
@@ -55,7 +55,7 @@ function App() {
   return (
     <Container className="my=4">
       <Routes>
-        <Route path="/" element={<NoteList notes={notes} availableTags={tags}/>}/>
+        <Route path="/" element={<NoteList notes={notesWithTags} availableTags={tags}/>}/>
         <Route 
           path="/new" 
           element={
