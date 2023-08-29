@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useMemo } from "react";
-import {useLocalStorage} from "./components/useLocalStorage"
+import {useLocalStorage} from "./customHooks/useLocalStorage"
 import { Container } from "react-bootstrap";
 import {Routes, Route, Navigate } from "react-router-dom"
 import NewNote from "./components/NewNote"
@@ -50,6 +50,7 @@ function App() {
       )}]
     })
   }
+
   function onUpdateNote( id: string, { tags, ...data}: NoteData) {
     setNotes(prevNotes => {
       return prevNotes.map(note => {
@@ -61,7 +62,6 @@ function App() {
           return note
         }
       })
-      
     })
   }
 
@@ -77,7 +77,7 @@ function App() {
           path="/new" 
           element={
             <NewNote 
-              onSubmit={onUpdateNote}
+              onSubmit={onCreateNote}
               onAddTag={addTag}
               availableTags={tags}
               />}/>
@@ -88,7 +88,7 @@ function App() {
             path="edit" 
             element={
               <EditNote 
-                onSubmit={onCreateNote}
+                onSubmit={onUpdateNote}
                 onAddTag={addTag}
                 availableTags={tags}/>} />
         </Route>
